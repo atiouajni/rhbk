@@ -145,6 +145,27 @@ oc get secret kc-initial-admin -n ${NAMESPACE} -o jsonpath='{.data.username}' | 
 oc get secret kc-initial-admin -n ${NAMESPACE} -o jsonpath='{.data.password}' | base64 -d && echo
 ```
 
+## Configuration Keycloak
+
+### Importer un Realm depuis un fichier JSON
+
+Pour importer un realm Keycloak (par exemple pour RHDH ou d'autres applications) :
+
+**Via la console d'administration :**
+
+1. Connectez-vous à la console admin Keycloak avec les credentials récupérés ci-dessus
+2. Dans le menu déroulant des realms (en haut à gauche), cliquez sur **"Create Realm"**
+3. Cliquez sur **"Browse"** pour sélectionner votre fichier `realm.json`
+4. Cliquez sur **"Create"**
+
+Le realm sera importé avec tous ses clients, utilisateurs, rôles et configurations.
+
+**Documentation officielle :**
+- [Keycloak Import/Export](https://www.keycloak.org/server/importExport#_importing_and_exporting_by_using_the_admin_console)
+
+**Exemple de realms pré-configurés :**
+- Pour RHDH : voir le repo [rhdh](https://github.com/atiouajni/rhdh) qui contient `keycloak-rhdh-realm-simple.json`
+
 ## Troubleshooting
 
 ### Keycloak ne démarre pas
