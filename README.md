@@ -38,21 +38,6 @@ oc new-project rhbk-demo
 #   - Chercher "Red Hat build of Keycloak"
 #   - Installer dans le namespace "rhbk-demo"
 
-# Ou via CLI:
-cat <<EOF | oc apply -f -
-apiVersion: operators.coreos.com/v1alpha1
-kind: Subscription
-metadata:
-  name: rhbk-operator
-  namespace: rhbk-demo
-spec:
-  channel: stable-v24
-  name: rhbk-operator
-  source: redhat-operators
-  sourceNamespace: openshift-marketplace
-  installPlanApproval: Automatic
-EOF
-
 # 3. Attendre que l'opérateur soit prêt
 oc get csv -n rhbk-demo -w
 ```
